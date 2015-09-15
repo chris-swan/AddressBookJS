@@ -41,7 +41,7 @@ $(document).ready(function() {
       newContact.addresses.push(newAddress);
     });
 
-    $("ul#contacts").append("<li><span class='contact'>" + newContact.firstName + " " + newContact.lastName + "</span></li>");
+    $("ul#contacts").append("<li><span class='contact'>" + newContact.fullName() + "</span></li>");
 
 
     $(".contact").last().click(function() {
