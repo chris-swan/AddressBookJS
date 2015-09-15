@@ -27,20 +27,23 @@ function resetFields() {
   $("input.new-state").val("");
 }
 
+
+
 $(document).ready(function() {
+
   $("#add-address").click(function() {
-    $("#new-addresses").append('<div class="new-address">' +
-                                '<div class="form-group">' +
-                                  '<input type="text" class="form-control address-type" placeholder="Home, Work, etc">' +
+    $("#new-addresses").append('<div class="new-address" id ="hide">' +
+                                '<div class="form-group" id ="hide">' +
+                                  '<input id ="hide" type="text" class="form-control address-type" placeholder="Home, Work, etc">' +
                                 '</div>' +
-                                '<div class="form-group">' +
-                                  '<input type="text" class="form-control new-street" placeholder="Street">' +
+                                '<div id ="hide" class="form-group">' +
+                                  '<input id ="hide" type="text" class="form-control new-street" placeholder="Street">' +
                                 '</div>' +
-                                '<div class="form-group">' +
-                                  '<input type="text" class="form-control new-city" placeholder="City">' +
+                                '<div id ="hide" class="form-group">' +
+                                  '<input id ="hide" type="text" class="form-control new-city" placeholder="City">' +
                                 '</div>' +
-                                '<div class="form-group">' +
-                                  '<input type="text" class="form-control new-state" placeholder="state">' +
+                                '<div id ="hide" class="form-group">' +
+                                  '<input id ="hide" type="text" class="form-control new-state" placeholder="state">' +
                                 '</div>' +
                               '</div>');
   });
@@ -48,6 +51,7 @@ $(document).ready(function() {
 
   $("form#new-contact").submit(function(event) {
     event.preventDefault();
+    $("input:not(.show)").hide();
 
     var inputtedFirstName = $("input#new-first-name").val();
     var inputtedLastName = $("input#new-last-name").val();
