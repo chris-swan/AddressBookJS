@@ -51,7 +51,6 @@ $(document).ready(function() {
 
   $("form#new-contact").submit(function(event) {
     event.preventDefault();
-    $("input:not(.show)").hide();
 
     var inputtedFirstName = $("input#new-first-name").val();
     var inputtedLastName = $("input#new-last-name").val();
@@ -72,7 +71,7 @@ $(document).ready(function() {
 
 
     $(".contact").last().click(function() {
-      $("#show-contact").show();
+      $("#show-contact").fadeIn();
 
       $("#show-contact h2").text(newContact.firstName + " " + newContact.lastName);
       $(".first-name").text(newContact.firstName);
