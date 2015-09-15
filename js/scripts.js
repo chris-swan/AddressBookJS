@@ -21,6 +21,7 @@ Address.prototype.fullAddress = function() {
 function resetFields() {
   $("input#new-first-name").val("");
   $("input#new-last-name").val("");
+  $("input.address-type").val("");
   $("input.new-street").val("");
   $("input.new-city").val("");
   $("input.new-state").val("");
@@ -29,6 +30,9 @@ function resetFields() {
 $(document).ready(function() {
   $("#add-address").click(function() {
     $("#new-addresses").append('<div class="new-address">' +
+                                '<div class="form-group">' +
+                                  '<input type="text" class="form-control address-type" placeholder="Home, Work, etc">' +
+                                '</div>' +
                                 '<div class="form-group">' +
                                   '<input type="text" class="form-control new-street" placeholder="Street">' +
                                 '</div>' +
@@ -51,11 +55,12 @@ $(document).ready(function() {
     var newContact = new Contact(inputtedFirstName, inputtedLastName);
 
     $(".new-address").each(function() {
+      var inputtedType = $(this).find("input.address-type").val();
       var inputtedStreet = $(this).find("input.new-street").val();
       var inputtedCity = $(this).find("input.new-city").val();
       var inputtedState = $(this).find("input.new-state").val();
 
-      var newAddress = { street: inputtedStreet, city: inputtedCity, state: inputtedState };
+      var newAddress = { addressType: inputtedType, street: inputtedStreet, city: inputtedCity, state: inputtedState };
       newContact.addresses.push(newAddress);
     });
 
@@ -72,11 +77,11 @@ $(document).ready(function() {
       $("ul#addresses").text("");
 
       newContact.addresses.forEach(function(address) {
-        $("ul#addresses").append("<li>" + address.street + ", " + address.city + ", " + address.state + "</li>");
+        $("ul#addresses").append("<li>" + address.addressType + ": " + address.street + ", " + address.city + ", " + address.state + "</li>");
       });
     });
 
     resetFields();
-    
+
   });
 });
